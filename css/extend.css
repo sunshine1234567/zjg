@@ -1,3 +1,20 @@
-/*À¶É«*/
+/*ï¿½ï¿½É«*/
 .bgc3aaaed,.Hbgc3aaaed{background-color:#3aaaed;}
 .bgc0080cc,.Hbgc0080cc{background-color:#0080cc;}
+input::input-placeholder { /* WebKit browsers */
+    color: #ffffff;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ffffff;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ffffff;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ffffff;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ffffff;
+}
