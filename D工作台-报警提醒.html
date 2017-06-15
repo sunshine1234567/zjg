@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="renderer" content="webkit" />
+<link rel="shortcut icon" href="favicon.ico">
+<title>工作台</title> 
+<meta name="keywords" content="关键字">
+<meta name="description" content="描述">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/extend.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div id="head" class="pr h50 lh50 bgc38a9ed cfff tc">
+		<span class="pa left0 top0 dib pl15 pr15 h50 cp">
+			<img class="pr top-2 w10" src="images/back.png"/>
+		</span>
+		<span class="f20 cfff">工作台</span>
+		<span class="pa right0 top0 dib pl15 pr15 h50 cp">
+			<img class="pr top-2 w5" src="images/more.png"/>
+		</span>
+	</div>
+	<div id="main" class="pb20">
+		<table class="wp100 bs0 lh40 tc c333 f16 bb bcccc">
+			<tr>
+				<td class="wp50">
+					<div class="border-box">任务提醒</div>
+				</td>
+				<td class="wp50">
+					<div class="border-box bb bw2 bc38a9ed c38a9ed">报警提醒</div>
+				</td>
+			</tr>
+		</table>
+		<ul id="list" class="lh1_8">
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc" style="min-width:12em;">江苏华电仪征热电有限公司</div>
+				<div class="c666 f13">#4炉烟筒</div>
+				<div class="c333 f13">报警类型：排放口离线报警</div>
+				<div class="c333 f13">报警发生时间：2017-3-28  10：00：01</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc" style="min-width:12em;">常山纺织厂 </div>
+				<div class="c333 f13">报警类型：非法生产报警 报警发生时间：2017-3-28  10：00：01 </div>
+				<div class="c333 f13">报警类型：非法生产报警 报警发生时间：2017-3-28  10：00：01 </div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc" style="min-width:12em;">江苏长强钢铁有限公司</div>
+				<div class="c333 f13">报警类型：偷排漏排报警 报警发生时间：2017-04-01  10：00：01 </div>
+				<div class="c333 f13">报警类型：偷排漏排报警 报警发生时间：2017-04-01  10：00：01 </div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc" style="min-width:12em;">江苏长强钢铁有限公司</div>
+				<div class="c333 f13">报警类型：数据异常报警</div>
+				<div class="c333 f13">报警发生时间：2017-04-02  10：00：01</div>
+			</li>
+		</ul>
+	</div>	
+</div>
+<script>
+	function downloading(){
+		var isdone=true;
+		var page=1;
+		function doing(){
+			if(!isdone)return;
+			isdone=false;
+			$.get("",{page:page},function(ret){
+				isdone=true;
+				var list=ret.list;
+				list=[1];//测试,请删除
+				html='';
+				for(var i=0;i<list.length;i++){
+					html+='<li class="pt20 pb20 bb bcddd pl15 pr15">\
+							<div class="dib c333 f14 bb bcccc" style="min-width:12em;">江苏长强钢铁有限公司</div>\
+							<div class="c333 f13">报警类型：数据异常报警</div>\
+							<div class="c333 f13">报警发生时间：2017-04-02  10：00：01</div>\
+						</li>';
+				}
+				$("#list").append(html);
+				page++;
+			});
+		}
+		$(window).scroll(function(){
+			var dhei=$(document).height();
+			var whei=$(window).height();
+			var _stop=$(window).scrollTop();
+			if(dhei<=whei+_stop){
+				doing();
+			}
+		});
+	}
+	downloading();
+</script>
+</body>
+</html>
+

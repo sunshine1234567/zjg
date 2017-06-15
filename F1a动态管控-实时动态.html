@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="renderer" content="webkit" />
+<link rel="shortcut icon" href="favicon.ico">
+<title>动态管控</title> 
+<meta name="keywords" content="关键字">
+<meta name="description" content="描述">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/extend.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/select.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div id="head">
+		<div class="pr h50 lh50 bgc38a9ed cfff tc">
+			<span class="pa left0 top0 dib pl15 pr15 h50 cp">
+				<img class="pr top-2 w10" src="images/back.png"/>
+			</span>
+			<span class="f20 cfff">动态管控</span>
+			<span class="pa right0 top0 dib pl15 pr15 h50 cp">
+				<img class="pr top-2 w5" src="images/more.png"/>
+			</span>
+		</div>
+		<table class="wp100 bs0 h35 tc c333 f14 bb bcccc">
+			<tr>
+				<td onclick="select(this)" class="wp25 cp">
+					<span class="mr1">行业</span>
+					<img class="h6" src="images/down.png"/>
+					<select id="industry" style="display:none;">
+						<option value="行业一">行业一</option>
+						<option value="行业二">行业二</option>
+						<option value="行业三">行业三</option>
+					</select>
+				</td>
+				<td onclick="select(this)" class="wp25 cp">
+					<span class="mr1">控制类型</span>
+					<img class="h6" src="images/down.png"/>
+					<select id="type" style="display:none;">
+						<option selected value="类型一">类型一</option>
+						<option value="类型二">类型二</option>
+						<option value="类型三">类型三</option>
+					</select>
+				</td>
+				<td onclick="select(this)" class="wp25 cp">
+					<span class="mr1">企业</span>
+					<img class="h6" src="images/down.png"/>
+					<select id="company" style="display:none;">
+						<option value="企业一">企业一</option>
+						<option value="企业二">企业二</option>
+						<option selected="selected" value="企业三">企业三</option>
+					</select>
+				</td>
+				<td onclick="select(this)" class="wp25 cp">
+					<span class="mr1">更多</span>
+					<img class="h6" src="images/down.png"/>
+					<select id="more" style="display:none;">
+						<option value="更多一">更多一</option>
+						<option selected="selected" value="更多二">更多二</option>
+						<option value="更多三">更多三</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<div class="bgceee h7"></div>
+	</div>
+	<div id="main" class="pb20">
+		<ul id="list" class="lh1_8">
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib bb bcccc pr10 mb10" style="min-width:180px;">
+					<img class="w16 mr5" src="images/li1.png"/>
+					<span class="c333 f14">常山纺织</span>
+				</div>
+				<div class="c333 f13">
+					<P>排放口：废水排放口</P>
+					<P>时间：2017-3-28 10：00：01</P>
+					<P>排放状态：<span class="c1aaa57">排放</span></P>
+					<P>联网状态：<span class="c1aaa57">在线</span></P>
+					<P>生产/治理设施状态：<span class="c1aaa57">开启,开启</span></P>
+					<P>数据状态：COD,氨氮</P>
+					<P>设备运行状态：COD,氨氮</P>
+					<P>关键工作参数：<span class="c1aaa57">正常</span></P>
+				</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib bb bcccc pr10 mb10" style="min-width:180px;">
+					<img class="w16 mr5" src="images/li1.png"/>
+					<span class="c333 f14">唐山瑞斯集团</span>
+				</div>
+				<div class="c333 f13">
+					<P>排放口：废气排放口</P>
+					<P>时间：2017-3-28 10：00：01</P>
+					<P>排放状态：<span class="c1aaa57">排放</span></P>
+					<P>联网状态：<span class="c1aaa57">在线<</span>/P>
+					<P>生产/治理设施状态：<span class="c1aaa57">开启,开启</P>
+					<P>数据状态：二氧化硫 [<span class="c1aaa57">正常</span>] 氮氧化物 [<span class="cea0505">异常</span>]</P>
+					<P>设备运行状态：二氧化硫 [<span class="c1aaa57">正常</span>] 氮氧化物 [<span class="cea0505">异常</span>]</P>
+					<P>关键工作参数：<span class="c1aaa57">正常</span></P>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<script>
+	$(function(){
+		downloading();
+		$("select").change(function(){
+			list();
+		});
+	});
+
+	function select(el){
+		var obj={};
+		var arr=[];
+		var select=$(el).find("select");
+		if(select.length==0)return;
+		var option=select.find("option");
+		for(var i=0;i<option.length;i++){
+			arr.push({value:$(option[i]).attr("value"),text:$(option[i]).text(),selected:$(option[i]).attr("selected")=="selected"?1:0});
+		}
+		var left=Number($(el).position().left)+Number($(el).width())/2-4;
+		obj.left=left;
+		obj.select=select;
+		obj.arr=arr;
+		selectbox(obj);
+	}
+	
+	function gethtml(obj){
+		var html='<li class="pt20 pb20 bb bcddd pl15 pr15">\
+					<div class="dib bb bcccc pr10 mb10" style="min-width:180px;">\
+						<img class="w16 mr5" src="images/li1.png"/>\
+						<span class="c333 f14">唐山瑞斯集团</span>\
+					</div>\
+					<div class="c333 f13">\
+						<P>排放口：废气排放口</P>\
+						<P>时间：2017-3-28 10：00：01</P>\
+						<P>排放状态：<span class="c1aaa57">排放</span></P>\
+						<P>联网状态：<span class="c1aaa57">在线<</span>/P>\
+						<P>生产/治理设施状态：<span class="c1aaa57">开启,开启</P>\
+						<P>数据状态：二氧化硫 [<span class="c1aaa57">正常</span>] 氮氧化物 [<span class="cea0505">异常</span>]</P>\
+						<P>设备运行状态：二氧化硫 [<span class="c1aaa57">正常</span>] 氮氧化物 [<span class="cea0505">异常</span>]</P>\
+						<P>关键工作参数：<span class="c1aaa57">正常</span></P>\
+					</div>\
+				</li>';
+		return html;
+	}
+	
+	function getdata(){
+		var data={};
+		var industry=$("#industry").val();
+		if(industry!="")data.industry=industry;
+		var type=$("#type").val();
+		if(type!="")data.type=type;
+		var company=$("#company").val();
+		if(company!="")data.company=type;
+		var more=$("#more").val();
+		if(more!="")data.more=more;
+		return data;
+	}
+	
+	function list(){
+		var data=getdata();
+		data.page=1;
+		$.get("",data,function(ret){
+			isdone=true;
+			var list=ret.list;
+			list=[1,2,3,4,5,6,7,8,9,10];//测试,请删除
+			if(list.length==0){
+				$("#list").html('<div class="f14 c999 tc pt50">暂无数据</div>');
+				return;
+			}
+			html='';
+			for(var i=0;i<list.length;i++){
+				html+=gethtml(list[i]);
+			}
+			$("#list").html(html);
+			downloading();
+		});
+	}
+	
+	function downloading(){
+		var isdone=true;
+		var page=2;
+		function doing(){
+			if(!isdone)return;
+			isdone=false;
+			var data=getdata();
+			data.page=page;
+			$.get("",data,function(ret){
+				isdone=true;
+				var list=ret.list;
+				list=[1,2,3,4,5,6,7,8,9,10];//测试,请删除
+				html='';
+				for(var i=0;i<list.length;i++){
+					html+=gethtml(list[i]);
+				}
+				$("#list").append(html);
+				page++;
+			});
+		}
+		$(window).unbind("scroll").bind("scroll",function(){
+			var dhei=$(document).height();
+			var whei=$(window).height();
+			var _stop=$(window).scrollTop();
+			if(dhei<=whei+_stop){
+				doing();
+			}
+		});
+	}
+</script>
+</body>
+</html>
+

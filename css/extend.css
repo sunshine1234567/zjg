@@ -1,20 +1,16 @@
-/*��ɫ*/
-.bgc3aaaed,.Hbgc3aaaed{background-color:#3aaaed;}
-.bgc0080cc,.Hbgc0080cc{background-color:#0080cc;}
-input::input-placeholder { /* WebKit browsers */
-    color: #ffffff;
-}
-input::-webkit-input-placeholder { /* WebKit browsers */
-    color: #ffffff;
-}
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #ffffff;
-}
+/*红色*/
+.cea0505,.Hcea0505:hover{color:#ea0505;}
 
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #ffffff;
-}
+/*蓝色*/
+.bgc3aaaed,.Hbgc3aaaed:hover{background-color:#3aaaed;}
+.bgc0080cc,.Hbgc0080cc:hover{background-color:#0080cc;}
+.c38a9ed,.Hc38a9ed:hover{color:#38a9ed;}
+.bc38a9ed,.Hbc38a9ed:hover{border-color:#38a9ed;}
+.bgc38a9ed,.Hbgc38a9ed:hover{background-color:#38a9ed;}
 
-input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #ffffff;
-}
+/*青色*/
+.c1aaa57,.Hc1aaa57:hover{color:#1aaa57;}
+
+/*灰色*/
+.bgcfafafa,.Hbgcfafafa:hover{background-color:#fafafa;}
+.bgcf9f9f9,.Hbgcf9f9f9:hover{background-color:#f9f9f9;}

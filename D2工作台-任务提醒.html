@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="renderer" content="webkit" />
+<link rel="shortcut icon" href="favicon.ico">
+<title>工作台</title> 
+<meta name="keywords" content="关键字">
+<meta name="description" content="描述">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/extend.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div id="head" class="pr h50 lh50 bgc38a9ed cfff tc">
+		<span class="pa left0 top0 dib pl15 pr15 h50 cp">
+			<img class="pr top-2 w10" src="images/back.png"/>
+		</span>
+		<span class="f20 cfff">工作台</span>
+		<span class="pa right0 top0 dib pl15 pr15 h50 cp">
+			<img class="pr top-2 w5" src="images/more.png"/>
+		</span>
+	</div>
+	<div id="main" class="pb20">
+		<table class="wp100 bs0 lh40 tc c333 f16 bb bcccc">
+			<tr>
+				<td class="wp50">
+					<div class="border-box">任务提醒</div>
+				</td>
+				<td class="wp50">
+					<div class="border-box bb bw2 bc38a9ed c38a9ed">报警提醒</div>
+				</td>
+			</tr>
+		</table>
+		<ul id="list" class="lh1_8">
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+			<li class="pt20 pb20 bb bcddd pl15 pr15">
+				<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>
+				<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>
+			</li>
+		</ul>
+	</div>	
+</div>
+<script>
+	function downloading(){
+		var isdone=true;
+		var page=1;
+		function doing(){
+			if(!isdone)return;
+			isdone=false;
+			$.get("",{page:page},function(ret){
+				isdone=true;
+				var list=ret.list;
+				list=[1];//测试,请删除
+				html='';
+				for(var i=0;i<list.length;i++){
+					html+='<li class="pt20 pb20 bb bcddd pl15 pr15">\
+							<div class="dib c333 f14 bb bcccc pr10">2017-3-28  10：00：00</div>\
+							<div class="c333 f13">江苏豪森药业污水排污口设备故障维修任务</div>\
+						</li>';
+				}
+				$("#list").append(html);
+				page++;
+			});
+		}
+		$(window).scroll(function(){
+			var dhei=$(document).height();
+			var whei=$(window).height();
+			var _stop=$(window).scrollTop();
+			if(dhei<=whei+_stop){
+				doing();
+			}
+		});
+	}
+	downloading();
+</script>
+</body>
+</html>
+
